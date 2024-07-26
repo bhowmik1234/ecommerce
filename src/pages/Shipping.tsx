@@ -1,7 +1,18 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
+import { CartReducerInitialState } from "../types/reducer-types";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Shipping = () => {
+  const navigate = useNavigate();
+  const { cartItems } = useSelector((state:{cartReducer: CartReducerInitialState})=> state.cartReducer);
+
+  useEffect(()=>{
+    if(cartItems.length <= 0){
+      navigate("/cart");
+    }
+  }, [cartItems])
 
   const [shippingInfo, setShippingInfo] = useState({
     address: "",
