@@ -152,7 +152,7 @@ const ProductCard = ({
     productId,
 }: OrderItem) => (
     <div className="transaction-product-card">
-        <img src={`${import.meta.env.VITE_SERVER}/${photo}`} alt={name} />
+        <img src={`${photo}`} alt={name} />
         <Link to={`/product/${productId}`}>{name}</Link>
         <span>
             ₹{price} X {quantity} = ₹{price * quantity}
