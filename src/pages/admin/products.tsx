@@ -48,7 +48,7 @@ const Products = () => {
 
   const { user } = useSelector((state:{userReducer: userReducerIntialState})=> state.userReducer)
 
-  const { data, isError, isLoading, error } = useAllProductsQuery("");
+  const { data, isError, isLoading, error } = useAllProductsQuery(user?._id!);
   const [rows, setRows] = useState<DataType[]>([]);
 
   if(isError){

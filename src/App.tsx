@@ -19,6 +19,7 @@ const Search = lazy(()=> import("./pages/Search"));
 const Shipping = lazy(()=> import("./pages/Shipping"));
 const Orders = lazy(()=> import("./pages/Orders"));
 const OrderDetails = lazy(()=> import("./pages/OrderDetails"));
+const Checkout = lazy(()=> import("./pages/Checkout"));
 
 
 const Login = lazy(()=> import("./pages/Login"));
@@ -83,7 +84,7 @@ export const App = () => {
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/orders/:id" element={<OrderDetails />} />
-
+          <Route path="/pay" element={<Checkout />} />
         </Route>
 
 

@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { useSelector } from "react-redux";
 import { userReducerIntialState } from "../../../types/reducer-types";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDeleteProductMutation, useProdectDetailsQuery, useUpdateProductMutation } from "../../../redux/api/productAPI";
 import { Skeleton } from "../../../components/Loader";
 import { ResponseToast } from "../../../utils/features";
@@ -14,7 +14,7 @@ const Productmanagement = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { data, isLoading } = useProdectDetailsQuery(params.id!);
+  const { data, isLoading, isError } = useProdectDetailsQuery(params.id!);
 
   const { photo, name, category, stock, price } = data?.product || {
     photo:"",
@@ -93,6 +93,8 @@ const Productmanagement = () => {
 
     }
   },[data])
+
+  if(isError) return < Navigate to={"/404"}/>
 
   return (
     <div className="admin-container">
