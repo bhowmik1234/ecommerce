@@ -70,7 +70,7 @@ const TransactionManagement = () => {
 
     return (
         <div className="admin-container">
-            <AdminSidebar />
+            {/* <AdminSidebar /> */}
             <main className="product-management">
                 {
                   isLoading ? <Skeleton length={20} width="50vw" /> :
@@ -140,6 +140,8 @@ const TransactionManagement = () => {
                   )
                 }
             </main>
+            <AdminSidebar />
+
         </div>
     );
 };

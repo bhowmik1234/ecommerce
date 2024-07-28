@@ -1,13 +1,15 @@
 .shipping {
     @include flex;
+    background-color: $secondary-color;
+    height: 100vh;
   
     .back-btn {
       @include square(2.5rem);
-      background-color: green;
+      background-color: $second-color;
       color: white;
       @include flex;
       position: fixed;
-      top: 2rem;
+      top: 5rem;
       left: 2rem;
       border-radius: 100%;
       border: none;
@@ -37,7 +39,8 @@
       }
       > input,
       > select {
-        border: 1px solid rgba(31, 31, 31, 0.351);
+        border: 1px solid $text-color;
+        background-color: $primary-color;
         padding: 1rem;
         outline: none;
         font-size: 1.05rem;
@@ -45,7 +48,7 @@
       }
   
       > button {
-        // @include btn(1rem, "blue", "white");
+        @include btn(1rem, $second-color, $text-color);
         border-radius: 5px;
         font-size: 1.05rem;
         text-transform: uppercase;
@@ -56,3 +59,25 @@
       }
     }
   }
+
+.checkout{
+  background-color: $secondary-color;
+  height: 100vh;
+  color: $text-color;
+  @include flex(row, center, center, 4rem);
+
+  .checkout-container{
+    color: $text-color;
+    background-color: #DDE6ED;
+    border-radius: 1rem;
+    padding: 1rem;
+    height: 40%;
+    font-size: 2rem;
+
+    > form > button{
+      background-color: $second-color;
+    }
+  }
+
+  
+}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaSearch, FaShoppingBag, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa"
+import { FaSearch, FaShoppingBag, FaSignInAlt, FaSignOutAlt, FaUser, FaHeart } from "react-icons/fa"
 import { useState } from "react";
 import { User } from "../types/types";
 import { signOut } from "firebase/auth";
@@ -25,8 +25,17 @@ const Header = ({user}: PropsTypes) => {
   }
   return (
     <nav className="header">
-      <Link onClick={()=>{setIsOpen(false)}} to="/">Home</Link>
-      <Link onClick={()=>{setIsOpen(false)}} to={"/search"}><FaSearch/></Link>
+      <div className="logo">
+        <Link onClick={()=>{setIsOpen(false)}} to="/"><p>Home</p></Link>
+      </div>
+      <div className="search-box">
+        <input type="text" placeholder="Search" />
+        <button><FaSearch /> </button>
+      </div>
+
+      <div className="nav-items">
+      <Link onClick={()=>{setIsOpen(false)}} to={"/search"}><FaHeart/></Link>
+      {/* <Link onClick={()=>{setIsOpen(false)}} to={"/search"}><FaSearch/></Link> */}
       <Link onClick={()=>{setIsOpen(false)}} to={"/cart"}><FaShoppingBag /></Link>
 
       {
@@ -44,7 +53,7 @@ const Header = ({user}: PropsTypes) => {
                   </Link>
                 )
               }
-              <Link to="/orders">orders</Link>
+              <Link to="/orders"><p>Orders</p></Link>
               <button onClick={logoutHandler}>
                 <FaSignOutAlt />
               </button>
@@ -56,6 +65,7 @@ const Header = ({user}: PropsTypes) => {
           <FaSignInAlt />
         </Link>
       }
+      </div>
 
     </nav>
   )

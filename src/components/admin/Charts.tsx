@@ -69,10 +69,22 @@ export const BarChart = ({
         grid: {
           display: false,
         },
+        ticks: {
+          color: "#fff", // Set y-axis labels text color
+          font: {
+            size: 15, // Set y-axis labels font size
+          },
+        },
       },
       x: {
         grid: {
           display: false,
+        },
+        ticks: {
+          color: "#fff", // Set x-axis labels text color
+          font: {
+            size: 15, // Set y-axis labels font size
+          },
         },
       },
     },
@@ -209,6 +221,7 @@ export const LineChart = ({
       title: {
         display: false,
       },
+      
     },
 
     scales: {
@@ -217,10 +230,22 @@ export const LineChart = ({
         grid: {
           display: false,
         },
+        ticks: {
+          color: "#fff", // Set y-axis labels text color
+          font: {
+            size: 15, // Set y-axis labels font size
+          },
+        },
       },
       x: {
         grid: {
           display: false,
+        },
+        ticks: {
+          color: "#fff", // Set y-axis labels text color
+          font: {
+            size: 15, // Set y-axis labels font size
+          },
         },
       },
     },

@@ -23,7 +23,7 @@ const Linecharts = () => {
 
   return (
     <div className="admin-container">
-      <AdminSidebar />
+      {/* <AdminSidebar /> */}
       <main className="chart-container">
         <h1>Line Charts</h1>
         {isLoading ? (
@@ -31,14 +31,15 @@ const Linecharts = () => {
         ) : (
           <>
             <section>
-              <LineChart
-                data={line.users}
-                label="Users"
-                borderColor="rgb(53, 162, 255)"
-                labels={lastTwelveMonths}
-                backgroundColor="rgba(53, 162, 255, 0.5)"
-              />
-              <h2>Active Users</h2>
+                    <LineChart
+                    data={line.users}
+                    label="Users"
+                    borderColor="rgb(53, 162, 255)"
+                    labels={lastTwelveMonths}
+                    backgroundColor="rgba(53, 162, 255, 0.5)"
+                  />
+                  <h2>Active Users</h2>
+             
             </section>
 
             <section>
@@ -76,6 +77,8 @@ const Linecharts = () => {
           </>
         )}
       </main>
+      <AdminSidebar />
+
     </div>
   );
 };

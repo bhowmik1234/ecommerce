@@ -1,6 +1,7 @@
 .chart-container {
-  background-color: white;
+  background-color: $secondary-color;
   padding: 4rem;
+  color: $text-color;
   overflow-y: auto;
   > h1 {
     margin: 0 0 5rem 2rem;
@@ -8,18 +9,33 @@
   > section {
     width: 80%;
     margin: 4rem auto;
+    background-color: $primary-color;
+    padding: 2rem;
+    border-radius: 1rem;
 
-    > div {
-      max-width: 25rem;
-      margin: auto;
-      margin-top: 6rem;
-      margin-bottom: -1rem;
+    > div{
+      display: flex;
+      gap: 2rem;
+      background-color: $primary-color;
+
+      > div {
+        max-width: 25rem;
+        margin: auto;
+        margin-top: 6rem;
+        margin-bottom: -1rem;
+        background-color: $primary-color;
+        padding: 4rem;
+        border-radius: 1rem;
+
+  
+        > h2 {
+          margin: 2rem 0;
+          text-align: center;
+          @include heading(2px);
+        }
+      }
     }
 
-    > h2 {
-      margin: 2rem 0;
-      text-align: center;
-      @include heading(2px);
-    }
+    
   }
 }

@@ -55,7 +55,7 @@ const NewProduct = () => {
 
   return (
     <div className="admin-container">
-      <AdminSidebar />
+      {/* <AdminSidebar /> */}
       <main className="product-management">
         <article>
           <form onSubmit={submitHamdler}>
@@ -108,6 +108,8 @@ const NewProduct = () => {
           </form>
         </article>
       </main>
+      <AdminSidebar />
+
     </div>
   );
 };

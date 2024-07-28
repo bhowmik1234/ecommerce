@@ -43,8 +43,13 @@
   width: $s;
 }
 
+@mixin rectangle($l: 2rem, $b: 1rem) {
+  height:$l;
+  width: $b;
+}
+
 @mixin baseShadow() {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.384);
+  box-shadow: 0 0 10px $second-color;
 }
 
 @mixin btn($p: 0.5rem 1rem, $bg, $color) {

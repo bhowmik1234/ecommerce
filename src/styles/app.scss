@@ -3,23 +3,37 @@
     line-height: 1.5;
     font-weight: 400;
   }
+
+$primary-color: #191C24;
+$secondary-color: black;
+$text-color: white;
+$second-color: #AF1763;
+$cart-color: #191C24;
+
+// $background-color: #f8f9fa;
+$shadow-color: rgba(0, 0, 0, 0.1);
   
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    // color: $text-color;
   }
   
   a {
     text-decoration: none;
-    color: black;
+    color: aquamarine;
   }
+
+  // ul{
+  //   text-decoration: none;
+  // }
   
   .red {
     color: red;
   }
   .purple {
-    color: rgb(47, 0, 255);
+    color: rgb(103, 87, 174);
   }
   .green {
     color: rgb(0, 195, 0);
@@ -45,40 +59,75 @@
 
 
 .header{
-  @include flex(row, flex-end, stretch, 4rem);
+  @include flex(row, space-around, center, 4rem);
+  // position: fixed;
+  width: 100%;
   padding: .5rem;
-  background-color: #3B5D50;
-  height: 4rem;
+  background-color: black;
+  height: 5rem;
   padding: 1rem;
-  a{
-    color: black;
-    letter-spacing: 2px;
-    font-size: 1.2rem;
-  }&:hover{
-    color: white;
+
+  .logo{
+    font-size: 1.5rem;
   }
 
-  button{
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    font-size: 1.2rem;
-  }&:hover{
-    color: magenta;
-  }
+  .search-box{
+    background-color: white;
+    padding: .5rem;
+    border: 1px solid black;
+    border-radius: .5rem;
+    @include flex(row, space-between, center, 1rem);
+    >button{
+      color: black;
+      background-color: white;
+      outline: none;
+      border: none;
+      font-size: 1.4rem;;
+    }
 
-  dialog{
-    border: 1px solid white;
-    border-radius: 10px;
-    padding: 5px;
-    width: 100px;
-    position: absolute;
-    left: calc(100% - 100px);
-    top: 8%;
-    >div{
-      @include flex(column, flex-start, center, 0.25rem);
+    >input{
+      padding: .5rem;
+      font-size: 1rem;
+      border: 1px solid black;
+      width: 40rem;
+      color: $secondary-color;
+      outline: none;
+      border: none;
+      border-radius: .5rem;
     }
   }
+
+  .nav-items{
+  @include flex(row, space-around, center, 2rem);
+    a{
+      font-size: 1.5rem;
+    }
+    > button{
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: white;
+    }&:hover{
+      color: magenta;
+    }
+  
+    > dialog{
+      border: 1px solid white;
+      background-color: $primary-color;
+      border-radius: 10px;
+      padding: 5px;
+      width: 100px;
+      position: absolute;
+      left: calc(100% - 100px);
+      top: 8%;
+      >div{
+        color: $text-color;
+        @include flex(column, flex-start, center, 0.25rem);
+      }
+    }
+  }
+
 }
 
 
@@ -100,12 +149,13 @@
 
 
   .admin-container {
-    @include grid(1fr 4fr, 2rem);
+    @include grid(4fr 1fr, 0rem);
     height: 100vh;
-    background-color: rgb(247, 247, 247);
+    color: $text-color;
+    background-color: $secondary-color;
     > aside {
       width: 100%;
-      background-color: white;
+      background-color: $primary-color;
       padding: 1rem;
       z-index: 10;
       overflow-y: auto;
@@ -138,20 +188,23 @@
   
   .table {
     border-collapse: collapse;
+    background-color: $primary-color;
     width: 100%;
+    border-radius: 10px;
     th,
     td {
       padding: 8px;
       text-align: left;
       vertical-align: middle;
+      border-bottom: 1px solid white;
     }
   
     th {
       font-weight: bold;
-      color: #0000009e;
+      color: $text-color;
       font-size: 1.1rem;
-      font-weight: 400;
-      padding: 2rem 1rem;
+      font-weight: 600;
+      padding: 2rem 2rem 2rem 4rem;
     }
   
     tbody {
@@ -160,7 +213,7 @@
       }
   
       td {
-        padding: 1rem;
+        padding: 1rem 1rem 1rem 4rem ;
   
         img {
           width: 4rem;
@@ -170,8 +223,8 @@
         }
         a {
           text-decoration: none;
-          background-color: rgba(44, 104, 255, 0.455);
-          color: rgba(44, 104, 255);
+          background-color: $second-color;
+          color: $text-color;
           padding: 0.25rem 0.5rem;
           border-radius: 10px;
         }
@@ -183,7 +236,7 @@
           outline: none;
           background-color: transparent;
           cursor: pointer;
-          color: rgb(255, 44, 44);
+          color: $second-color;
           &:hover {
             opacity: 0.6;
           }
@@ -209,10 +262,10 @@
       outline: none;
       border-radius: 10px;
       cursor: pointer;
-      background-color: rgba(0, 115, 255);
-      color: white;
+      background-color: $second-color;
+      color: $text-color;
       &:disabled {
-        background-color: rgba(0, 115, 255, 0.1);
+        background-color: black;
         cursor: not-allowed;
       }
     }
@@ -225,12 +278,12 @@
     border: none;
     outline: none;
     cursor: pointer;
-    color: rgba(44, 104, 255);
+    color: $text-color;
     position: fixed;
     top: 1rem;
     left: 1rem;
     font-size: 2rem;
-    background-color: white;
+    background-color: $second-color;
     border-radius: 50%;
     z-index: 9;
   }
@@ -244,7 +297,7 @@
     outline: none;
     cursor: pointer;
     background-color: rgb(168, 2, 2);
-    color: white;
+    color: $text-color;
     border-radius: 10px;
   }
   
@@ -299,4 +352,162 @@
       opacity: 0.6;
     }
   }
+
+
+
+
+  // %%%%%%%%%%% footer
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+// $primary-color: #3a3a3a;
+// $secondary-color: #f5f5f5;
+$accent-color: #e84c3d;
+
+.footer {
+  font-family: 'Poppins', sans-serif;
+  background-color: $primary-color;
+  color: $text-color;
+  padding: 4rem 2rem 2rem;
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+
+  }
+
+  &__section {
+    flex: 1 1 200px;
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $second-color;
+
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+
+  &__newsletter {
+    flex: 2 1 400px;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+    margin-bottom: 1rem;
+
+    input {
+      flex-grow: 1;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-right: none;
+      font-family: inherit;
+    }
+
+    button {
+      background-color: $accent-color;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($accent-color, 10%);
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: $primary-color;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+
+  &__bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+
+  &__legal {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    &__content {
+      flex-direction: column;
+    }
+
+    &__section {
+      margin-bottom: 2rem;
+    }
+
+    &__bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    &__legal {
+      justify-content: center;
+    }
+  }
+}
   

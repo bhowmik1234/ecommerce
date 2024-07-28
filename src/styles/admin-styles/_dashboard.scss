@@ -1,11 +1,13 @@
 .dashboard {
   overflow-y: auto;
-
+  color: $text-color;
+  padding: 0 0 0 2rem;
+  direction: rtl;
   .bar {
     height: 4rem;
     @include flex(row, unset);
     padding: 0 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+    border-bottom: 1px solid white;
     > input {
       margin-right: auto;
       @include inputStyle(100%, 1rem 0);
@@ -26,8 +28,8 @@
 
     .widget {
       width: 16rem;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
+      background-color: $primary-color;
+      // box-shadow: 0 0 10px white;
       padding: 2rem;
       border-radius: 10px;
       @include flex(row, space-between, stretch, 0);
@@ -57,7 +59,7 @@
           content: "";
           position: absolute;
           @include square(4rem);
-          background-color: white;
+          background-color: #191C24;
           border-radius: 100%;
         }
         span {
@@ -71,7 +73,7 @@
     @include flex(row, unset, unset, 2rem);
     padding: 0 2rem 2rem 0;
     > div {
-      background-color: white;
+      background-color: $primary-color;
       border-radius: 10px;
     }
 
@@ -91,6 +93,7 @@
       max-width: 16rem;
       @include flex(column, center, unset, 0);
       padding-bottom: 2rem;
+
       > h2 {
         @include heading;
         margin: 1.5rem 0 2rem 0;
@@ -121,9 +124,12 @@
           border-radius: 20px;
           height: 0.5rem;
           flex: none;
+          position: relative;
           > div {
             border-radius: 20px;
             height: 100%;
+            position: absolute;
+            left: 0; /* Align to the left */
           }
         }
         > span {
@@ -141,8 +147,8 @@
     height: 30rem;
 
     > div {
-      background-color: white;
-      box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.132);
+      background-color: $primary-color;
+      // box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.132);
       border-radius: 10px;
     }
     .gender-chart {

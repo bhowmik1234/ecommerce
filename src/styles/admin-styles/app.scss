@@ -34,7 +34,7 @@ a {
 @import "admin-styles/mediaquery";
 
 .admin-container {
-  @include grid(1fr 4fr, 2rem);
+  @include grid(4fr 1fr, 2rem);
   height: 100vh;
   background-color: rgb(247, 247, 247);
   > aside {

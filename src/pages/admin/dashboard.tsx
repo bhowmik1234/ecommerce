@@ -19,111 +19,114 @@ const Dashboard = () => {
 
   const { isLoading, data, isError, error } = useStatsQuery(user?._id!);
 
-  const stats =  data?.stats!;
-  if(isError){
+  const stats = data?.stats!;
+  if (isError) {
     const err = error as CustomError;
-    toast.error(err.data.message );
+    toast.error(err.data.message);
   }
 
   return (
     <div className="admin-container">
-      <AdminSidebar />
+      {/* <AdminSidebar /> */}
+
       <main className="dashboard">
         {
           isLoading ? <Skeleton length={20} width="50vw" /> :
-          (
-            <>
-              <div className="bar">
-          <BsSearch />
-          <input type="text" placeholder="Search for data, users, docs" />
-          <FaRegBell />
-          <img src={user?.photo} alt="User" />
-        </div>
+            (
+              <>
+                <div className="bar">
+                  <BsSearch />
+                  <input type="text" placeholder="Search for data, users, docs" />
+                  <FaRegBell />
+                  <img src={user?.photo} alt="User" />
+                </div>
 
-        <section className="widget-container">
-          <WidgetItem
-            percent={stats.changePercent.revenue}
-            amount={true}
-            value={stats.count.revenue}
-            heading="Revenue"
-            color="rgb(0, 115, 255)"
-          />
-          <WidgetItem
-            percent={stats.changePercent.user}
-            value={stats.count.user}
-            color="rgb(0 198 202)"
-            heading="Users"
-          />
-          <WidgetItem
-            percent={stats.changePercent.order}
-            value={stats.count.order}
-            color="rgb(255 196 0)"
-            heading="Transactions"
-          />
-
-          <WidgetItem
-            percent={stats.changePercent.product}
-            value={stats.count.product}
-            color="rgb(76 0 255)"
-            heading="Products"
-          />
-        </section>
-
-        <section className="graph-container">
-          <div className="revenue-chart">
-            <h2>Revenue & Transaction</h2>
-            <BarChart
-              data_1={stats.chart.order}
-              data_2={stats.chart.revenue}
-              title_1="Revenue"
-              title_2="Transaction"
-              bgColor_1="rgb(0, 115, 255)"
-              bgColor_2="rgba(53, 162, 235, 0.8)"
-            />
-          </div>
-
-          <div className="dashboard-categories">
-            <h2>Inventory</h2>
-
-            <div>
-              {stats.categoryCount.map((i) => {
-
-                const [heading, value] = Object.entries(i)[0];
-                return (
-                  <CategoryItem
-                    key={heading}
-                    value={value}
-                    heading={heading}
-                    color={`hsl(${value * 4}, ${value}%, 50%)`}
+                <section className="widget-container">
+                  <WidgetItem
+                    percent={stats.changePercent.revenue}
+                    amount={true}
+                    value={stats.count.revenue}
+                    heading="Revenue"
+                    color="rgb(0, 115, 255)"
                   />
-                )
-              })}
-            </div>
-          </div>
-        </section>
+                  <WidgetItem
+                    percent={stats.changePercent.user}
+                    value={stats.count.user}
+                    color="rgb(0 198 202)"
+                    heading="Users"
+                  />
+                  <WidgetItem
+                    percent={stats.changePercent.order}
+                    value={stats.count.order}
+                    color="rgb(255 196 0)"
+                    heading="Transactions"
+                  />
 
-        <section className="transaction-container">
-          <div className="gender-chart">
-            <h2>Gender Ratio</h2>
-            <DoughnutChart
-              labels={["Female", "Male"]}
-              data={[stats.userRatio.female, stats.userRatio.male]}
-              backgroundColor={[
-                "hsl(340, 82%, 56%)",
-                "rgba(53, 162, 235, 0.8)",
-              ]}
-              cutout={90}
-            />
-            <p>
-              <BiMaleFemale />
-            </p>
-          </div>
-          <Table data={stats.latestTransaction} />
-        </section>
-            </>
-          )
+                  <WidgetItem
+                    percent={stats.changePercent.product}
+                    value={stats.count.product}
+                    color="rgb(100 200 65)"
+                    heading="Products"
+                  />
+                </section>
+
+                <section className="graph-container">
+                  <div className="revenue-chart">
+                    <h2>Revenue & Transaction</h2>
+                    <BarChart
+                      data_1={stats.chart.order}
+                      data_2={stats.chart.revenue}
+                      title_1="Revenue"
+                      title_2="Transaction"
+                      bgColor_1="rgb(0, 115, 255)"
+                      bgColor_2="rgba(53, 162, 235, 0.8)"
+                    />
+                  </div>
+
+                  <div className="dashboard-categories">
+                    <h2>Inventory</h2>
+
+                    <div>
+                      {stats.categoryCount.map((i) => {
+
+                        const [heading, value] = Object.entries(i)[0];
+                        return (
+                          <CategoryItem
+                            key={heading}
+                            value={value}
+                            heading={heading}
+                            color={`hsl(${value * 4}, ${value}%, 50%)`}
+                          />
+                        )
+                      })}
+                    </div>
+                  </div>
+                </section>
+
+                <section className="transaction-container">
+                  <div className="gender-chart">
+                    <h2>Gender Ratio</h2>
+                    <DoughnutChart
+                      labels={["Female", "Male"]}
+                      data={[stats.userRatio.female, stats.userRatio.male]}
+                      backgroundColor={[
+                        "hsl(340, 82%, 56%)",
+                        "rgba(53, 162, 235, 0.8)",
+                      ]}
+                      cutout={90}
+                    />
+                    <p>
+                      <BiMaleFemale />
+                    </p>
+                  </div>
+                  <Table data={stats.latestTransaction} />
+                </section>
+              </>
+            )
         }
       </main>
+      <AdminSidebar />
+
     </div>
   );
 };
@@ -187,16 +190,19 @@ interface CategoryItemProps {
 
 const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
   <div className="category-item">
-    <h5>{heading}</h5>
+    <span>{value}%</span>
     <div>
       <div
         style={{
           backgroundColor: color,
           width: `${value}%`,
         }}
-      ></div>
+      >
+
+      </div>
     </div>
-    <span>{value}%</span>
+    <h5>{heading}</h5>
+
   </div>
 );
 

@@ -48,9 +48,9 @@ const Coupon = () => {
 
   return (
     <div className="admin-container">
-      <AdminSidebar />
+      {/* <AdminSidebar /> */}
       <main className="dashboard-app-container">
-        <h1>Coupon</h1>
+        <h1> Generate Coupon</h1>
         <section>
           <form className="coupon-form" onSubmit={submitHandler}>
             <input
@@ -107,6 +107,8 @@ const Coupon = () => {
           )}
         </section>
       </main>
+      <AdminSidebar />
+
     </div>
   );
 };

@@ -76,7 +76,7 @@ const CheckoutForm = () => {
     return (
         <div className="checkout-container">
             <form onSubmit={submitHandler}>
-                <PaymentElement />
+                <PaymentElement  />
                 <button type="submit" disabled={isProcessing}>
                     {isProcessing ? "Processing.." : "Pay"}
                 </button>
@@ -91,9 +91,12 @@ const Checkout = () => {
 
     if (!clientSecret) return <Navigate to={"/shipping"} />;
     return (
-        <Elements options={{ clientSecret }} stripe={stripePromise}>
-            <CheckoutForm />
-        </Elements>
+        <div className="checkout">
+            <Elements options={{ clientSecret }} stripe={stripePromise}>
+                <CheckoutForm />
+            </Elements>
+
+        </div>
     );
 };
 

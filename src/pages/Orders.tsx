@@ -81,8 +81,11 @@ const Orders = () => {
   )();
   return (
     <div className="container">
-      <h1>My Orders</h1>
-      <main>{isLoading ? <Skeleton width="50vw" length={25} /> : Table}</main>
+      <div>
+
+        <h1>My Orders</h1>
+        <main>{isLoading ? <Skeleton width="50vw" length={25} /> : Table}</main>
+      </div>
     </div>
   );
 };

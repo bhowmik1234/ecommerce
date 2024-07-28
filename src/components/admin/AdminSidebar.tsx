@@ -60,15 +60,16 @@ const AdminSidebar = () => {
         }
       >
         <h2>Logo.</h2>
-        <DivOne location={location} />
-        <DivTwo location={location} />
-        <DivThree location={location} />
-
         {phoneActive && (
           <button id="close-sidebar" onClick={() => setShowModal(false)}>
             Close
           </button>
         )}
+        
+        <DivOne location={location} />
+        <DivTwo location={location} />
+
+        
       </aside>
     </>
   );
@@ -102,6 +103,12 @@ const DivOne = ({ location }: { location: Location }) => (
         Icon={AiFillFileText}
         location={location}
       />
+      <Li
+        url="/admin/app/coupon"
+        text="Coupon"
+        Icon={RiCoupon3Fill}
+        location={location}
+      />
     </ul>
   </div>
 );
@@ -132,31 +139,6 @@ const DivTwo = ({ location }: { location: Location }) => (
   </div>
 );
 
-const DivThree = ({ location }: { location: Location }) => (
-  <div>
-    <h5>Apps</h5>
-    <ul>
-      <Li
-        url="/admin/app/stopwatch"
-        text="Stopwatch"
-        Icon={FaStopwatch}
-        location={location}
-      />
-      <Li
-        url="/admin/app/coupon"
-        text="Coupon"
-        Icon={RiCoupon3Fill}
-        location={location}
-      />
-      <Li
-        url="/admin/app/toss"
-        text="Toss"
-        Icon={FaGamepad}
-        location={location}
-      />
-    </ul>
-  </div>
-);
 
 interface LiProps {
   url: string;
@@ -168,14 +150,14 @@ const Li = ({ url, text, location, Icon }: LiProps) => (
   <li
     style={{
       backgroundColor: location.pathname.includes(url)
-        ? "rgba(0,115,255,0.1)"
-        : "white",
+        ? "#AF1763"
+        : "#191C24",
     }}
   >
     <Link
       to={url}
       style={{
-        color: location.pathname.includes(url) ? "rgb(0,115,255)" : "black",
+        color: location.pathname.includes(url) ? "rgb(255,255,255)" : "white",
       }}
     >
       <Icon />

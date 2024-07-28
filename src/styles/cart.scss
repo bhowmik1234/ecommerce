@@ -1,7 +1,7 @@
 
 .cart {
     padding: 2rem 4rem;
-
+    background-color: $secondary-color;
     @include flex(row, unset, unset, 4rem);
     height: calc(100vh - 4rem);
   
@@ -18,14 +18,16 @@
     }
   
     > aside {
-      border: 1px solid black;
-      border-radius: 5px;
+      // border: 1px solid black;
+      background-color: $primary-color;
+      border-radius: 1rem;
       width: 30%;
       padding: 4rem;
       @include flex(column, center, stretch, 1.5rem);
       > input {
         padding: 1rem;
-        border: 1px solid rgba(0, 0, 0, 0.28);
+        border: 1px solid $text-color;
+        background-color: $primary-color;
         outline: none;
         border-radius: 5px;
         margin-top: 2rem;
@@ -35,10 +37,11 @@
       }
   
       > a {
-        background-color: blue;
+        background-color: $second-color;
         padding: 1rem;
         text-decoration: none;
         color: white;
+        font-weight: 1rem;
         @include flex;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -62,7 +65,7 @@
   .cart-item {
     border: 1px solid black;
     border-radius: 1rem;
-    background-color: #d4d4d8;
+    background-color: $cart-color;
     padding: 0.2rem 1rem;
     @include flex(row, flex-start, center, 3rem);
     > img {
@@ -74,9 +77,9 @@
       @include flex(column, center, flex-start, 0.25rem);
       a {
         font-size: 1.2rem;
-        color: black;
+        color: $text-color;
         &:hover {
-          color: blue;
+          color: $second-color;
         }
       }
   
@@ -95,9 +98,10 @@
         @include flex;
         cursor: pointer;
         font-size: 1.2rem;
+        background-color: $second-color;
         &:hover {
           background-color: white;
-          color: green;
+          color: $second-color;
         }
       }
     }

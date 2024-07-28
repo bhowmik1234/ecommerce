@@ -93,8 +93,10 @@ const Customers = () => {
 
   return (
     <div className="admin-container">
-      <AdminSidebar />
+      {/* <AdminSidebar /> */}
       <main>{isLoading ? <Skeleton width="50vw" length={25} /> : Table}</main>
+      <AdminSidebar />
+
     </div>
   );
 };
