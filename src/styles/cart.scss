@@ -7,57 +7,139 @@
   
     > main {
       width: 70%;
+      color: $text-color;
       > h1 {
         @include heading(2px);
         text-align: center;
       }
+      svg{
+        color: $second-color;
+        &:hover{
+          color: $text-color;
+        }
+      }
+
       overflow-y: auto;
       &::-webkit-scrollbar {
         display: none;
       }
     }
-  
-    > aside {
-      // border: 1px solid black;
+
+    .checkout-summary {
       background-color: $primary-color;
+      color: $text-color;
       border-radius: 1rem;
       width: 30%;
-      padding: 4rem;
-      @include flex(column, center, stretch, 1.5rem);
-      > input {
-        padding: 1rem;
-        border: 1px solid $text-color;
-        background-color: $primary-color;
-        outline: none;
-        border-radius: 5px;
-        margin-top: 2rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      @include flex(column, flex-start, stretch, 1.5rem);
+    
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $accent-color;
       }
-      > p {
-        font-size: 1.1rem;
+    
+      &__details {
+        @include flex(column, flex-start, stretch, 0.75rem);
       }
-  
-      > a {
-        background-color: $second-color;
+    
+      &__row {
+        @include flex(row, space-between, center);
+        font-size: 1rem;
+    
+        &:not(:last-child) {
+          padding-bottom: 0.75rem;
+          border-bottom: 1px solid rgba($text-color, 0.1);
+        }
+      }
+    
+      &__discount {
+        color: $accent-color;
+      }
+    
+      &__total {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+      }
+    
+      &__coupon {
+        @include flex(row, space-between, center);
+        gap: 0.5rem;
+    
+        input {
+          flex-grow: 1;
+          padding: 0.75rem;
+          border: 1px solid rgba($text-color, 0.2);
+          background-color: $primary-color;
+          outline: none;
+          border-radius: 5px;
+          color: $text-color;
+          transition: border-color 0.3s ease;
+    
+          &:focus {
+            border-color: $accent-color;
+          }
+        }
+    
+        button {
+          padding: 0.75rem 1rem;
+          background-color: $accent-color;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+    
+          &:hover {
+            background-color: darken($accent-color, 10%);
+          }
+        }
+      }
+    
+      &__coupon-status {
+        @include flex(row, flex-start, center, 0.5rem);
+        font-size: 0.9rem;
+    
+        &.green {
+          color: #28a745;
+        }
+    
+        &.red {
+          color: #dc3545;
+        }
+    
+        code {
+          font-weight: 600;
+          background-color: rgba($accent-color, 0.1);
+          padding: 0.2rem 0.4rem;
+          border-radius: 3px;
+        }
+      }
+    
+      &__checkout-btn {
+        background-color: $accent-color;
         padding: 1rem;
         text-decoration: none;
         color: white;
-        font-weight: 1rem;
-        @include flex;
+        font-weight: 600;
+        @include flex(row, center, center);
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         border-radius: 5px;
+        transition: background-color 0.3s ease;
+    
         &:hover {
-          opacity: 0.8;
+          background-color: darken($accent-color, 10%);
         }
       }
-  
-      > span {
-        margin-top: -1rem;
-        @include flex(row, center, center, 5px);
-        > code {
-          font-weight: 900;
-          align-self: flex-end;
-        }
+    }
+    
+    @media (max-width: 768px) {
+      .checkout-summary {
+        width: 100%;
       }
     }
   }

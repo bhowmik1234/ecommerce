@@ -1,83 +1,121 @@
-.shipping {
-    @include flex;
+
+
+
+.shipping-container {
+    @include flex(column);
     background-color: $secondary-color;
-    height: 100vh;
-  
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+
     .back-btn {
-      @include square(2.5rem);
-      background-color: $second-color;
-      color: white;
-      @include flex;
-      position: fixed;
-      top: 5rem;
-      left: 2rem;
-      border-radius: 100%;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      @include baseShadow;
-  
-      svg {
-        transition: all 0.3s;
-      }
-  
-      &:hover svg {
-        translate: -0.25rem;
-      }
-    }
-  
-    > form {
-      max-width: 450px;
-      width: 100%;
-      @include flex(column, center, stretch, 2rem);
-      padding: 2rem;
-  
-      > h1 {
-        @include heading(2px);
-        margin: 2rem;
-        text-align: center;
-      }
-      > input,
-      > select {
-        border: 1px solid $text-color;
-        background-color: $primary-color;
-        padding: 1rem;
-        outline: none;
-        font-size: 1.05rem;
-        border-radius: 5px;
-      }
-  
-      > button {
-        @include btn(1rem, $second-color, $text-color);
-        border-radius: 5px;
-        font-size: 1.05rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+        position: absolute;
+        top: 6rem;
+        left: 2rem;
+        background-color: $second-color;
+        color: $text-color;
+        border: none;
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        @include flex;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
         &:hover {
-          opacity: 0.8;
+            background-color: darken($second-color, 10%);
+            transform: translateX(-5px);
         }
-      }
     }
-  }
 
-.checkout{
-  background-color: $secondary-color;
-  height: 100vh;
-  color: $text-color;
-  @include flex(row, center, center, 4rem);
+    .shipping-form {
+        background-color: $primary-color;
+        color: $text-color;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 3rem;
+        width: 100%;
+        max-width: 500px;
+        @include flex(column, flex-start, stretch, 1.5rem);
 
-  .checkout-container{
+        h1 {
+            @include heading;
+            margin-bottom: 0;
+        }
+
+        p {
+            color: lighten($text-color, 20%);
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            position: relative;
+
+            .input-icon {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                color: $second-color;
+            }
+
+            input,
+            select {
+                width: 100%;
+                padding: 1rem 1rem 1rem 3rem;
+                background-color: $primary-color;
+                color: $text-color;
+                border-radius: 5px;
+                font-size: 1rem;
+                outline: none;
+                border: 1px solid $text-color;
+                transition: all 0.3s ease;
+
+                // &:focus {
+                //   border-color: $accent-color;
+                //   box-shadow: 0 0 0 2px rgba($accent-color, 0.2);
+                // }
+            }
+
+            select {
+                appearance: none;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 1rem center;
+                padding-right: 2.5rem;
+            }
+        }
+
+        .submit-btn {
+            @include btn(1rem, $second-color, $text-color);
+            border-radius: 5px;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-top: 1rem;
+
+            &:hover {
+                background-color: darken($second-color, 10%);
+            }
+        }
+    }
+}
+
+.checkout {
+    height: 100vh;
     color: $text-color;
-    background-color: #DDE6ED;
-    border-radius: 1rem;
-    padding: 1rem;
-    height: 40%;
-    font-size: 2rem;
+    @include flex(row, center, center, 4rem);
 
-    > form > button{
-      background-color: $second-color;
+    .checkout-container {
+        color: $text-color;
+        background-color: #dde6ed;
+        border-radius: 1rem;
+        padding: 1rem;
+        height: 40%;
+        font-size: 2rem;
+
+        > form > button {
+            background-color: $second-color;
+        }
     }
-  }
-
-  
 }

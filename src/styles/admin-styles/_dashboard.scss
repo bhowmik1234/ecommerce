@@ -155,6 +155,7 @@
       width: 100%;
       max-width: 20rem;
       padding: 1rem;
+      // color: $text-color;
       position: relative;
       > h2 {
         text-align: center;
@@ -164,7 +165,7 @@
       > p {
         @include posCenter;
         font-size: 2rem;
-        color: rgba(0, 0, 0, 0.634);
+        color: $text-color;
       }
     }
 

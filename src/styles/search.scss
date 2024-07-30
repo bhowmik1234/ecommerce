@@ -2,27 +2,135 @@
     padding: 2rem;
     @include flex(row, flex-start, stretch, 2rem);
     min-height: calc(100vh - 6.5vh);
+    background-color: $secondary-color;
+    color: $text-color;
   
-    > aside {
+    // > aside {
+    //   background-color: $primary-color;
+    //   min-width: 20rem;
+    //   box-shadow: 0px 0px 5px $text-color;
+    //   color: $text-color;
+    //   padding: 2rem;
+    //   @include flex(column, flex-start, stretch, 0.5rem);
+    //   > h2 {
+    //     @include heading;
+    //   }
+  
+    //   > div {
+    //     > input,
+    //     > select {
+    //       @include inputStyle(
+    //         100%,
+    //         1rem,
+    //         $primary-color,
+    //         1px solid $text-color
+    //       );
+    //       color: $text-color;
+    //       border-radius: 10px;
+    //       margin: 0.5rem;
+    //     }
+    //   }
+    // }
+
+    aside {
+      background-color: $primary-color;
       min-width: 20rem;
-      box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.247);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      color: $text-color;
       padding: 2rem;
-      @include flex(column, flex-start, stretch, 0.5rem);
+      border-radius: 8px;
+      @include flex(column, flex-start, stretch, 1rem);
+      font-family: 'Roboto', sans-serif;
+    
       > h2 {
         @include heading;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 2px solid $second-color;
+        padding-bottom: 0.5rem;
       }
-  
+    
       > div {
+        background-color: $secondary-color;
+        padding: 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        > h4 {
+          font-size: 1rem;
+          font-weight: 500;
+          margin-bottom: 0.5rem;
+          color: $text-color;
+        }
+    
         > input,
         > select {
           @include inputStyle(
             100%,
-            1rem,
+            0.75rem 1rem,
             white,
-            1px solid rgba(154, 154, 154, 0.38)
+            1px solid $secondary-color
           );
-          border-radius: 10px;
-          margin: 0.5rem;
+          color: $text-color;
+          background-color: $primary-color;
+          border-radius: 8px;
+          font-size: 0.9rem;
+          appearance: none;
+          cursor: pointer;
+  
+        }
+    
+        > select {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 1rem center;
+          padding-right: 2.5rem;
+        }
+    
+        > input[type="range"] {
+          -webkit-appearance: none;
+          width: 100%;
+          height: 5px;
+          border-radius: 5px;
+          background: #ddd;
+          outline: none;
+          padding: 0;
+          margin: 0;
+    
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: $second-color;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+    
+            &:hover {
+              background: darken($second-color, 10%);
+              transform: scale(1.1);
+            }
+          }
+    
+          &::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border: 0;
+            border-radius: 50%;
+            background: $second-color;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+    
+            &:hover {
+              background: darken($second-color, 10%);
+            }
+          }
         }
       }
     }
@@ -30,37 +138,46 @@
     > main {
       width: 100%;
       padding: 0 2rem;
-      > h1 {
-        @include heading;
-      }
   
-      > input {
-        @include inputStyle(50%);
-        border-radius: 5px;
-        margin: 1rem;
-        font-size: 1.2rem;
-        display: block;
-        border: 1px solid black;
-      }
   
       .search-product-list {
         @include flex(row, flex-start, flex-start);
+        // background-color: red;
         flex-wrap: wrap;
         height: calc(100% - 10rem);
         overflow-y: auto;
+        > h1{
+          color: $text-color;
+          font-size: 2rem;
+          text-align: center; 
+          width: 100%;
+          margin-bottom: 1rem; 
+        }
+        // .product-items {
+        //   display: grid;
+        //   background-color: red;
+        //   grid-template-columns: repeat(4, 1fr);
+        //   gap: 1rem;
+        //   width: 100%;
+        //   box-sizing: border-box;
+        // }
       }
       // $p: 0.5rem 1rem, $bg, $color
       article {
         @include flex;
+        color: $text-color;
         > button {
           padding: 0.5rem 1rem;
           @include flex;
+          background-color: $second-color;
+          outline: none;
+          border: none;
         //   @include btn(0.5rem 1rem, $color3, $color1);
           border-radius: 10px;
           &:disabled {
             cursor: not-allowed;
             opacity: 0.5;
-            color: green;
+            color: $text-color;
           }
         }
       }

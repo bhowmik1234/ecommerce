@@ -170,7 +170,7 @@
   padding: 1.5rem;
   @include flex(column, space-between, center, 1rem);
   position: relative;
-  background-color: white;
+  background-color: $primary-color;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px $shadow-color;
   transition: all 0.3s ease;
@@ -194,10 +194,6 @@
       transition: transform 0.3s ease;
     }
 
-    &:hover img {
-      transform: scale(1.05);
-    }
-
     .discount {
       position: absolute;
       top: 0.5rem;
@@ -209,6 +205,41 @@
       font-size: 0.8rem;
       font-weight: bold;
     }
+
+    .wishlistBtn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background-color: $text-color;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      svg {
+        font-size: 1rem;
+        color: $secondary-color;
+        transition: all 0.3s ease;
+      }
+
+      &.wishlisted {
+        background-color: $second-color;
+
+        svg {
+          color: $text-color;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
   }
 
   .productInfo {
@@ -218,14 +249,14 @@
     .name {
       font-size: 1.2rem;
       font-weight: bold;
-      color: black;
+      color: $text-color;
       margin: 0;
     }
 
     .price {
       font-weight: 700;
       font-size: 1.1rem;
-      color: black;
+      color: $text-color;
     }
 
     .rating {
@@ -250,21 +281,22 @@
     border-radius: 0.3rem;
     outline: none;
     border: none;
-    background-color: $primary-color;
+    background-color: $second-color;
     color: white;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      // background-color: darken($primary-color, 10%);
+      opacity: 0.7;
     }
 
     &:active {
       transform: scale(0.98);
     }
   }
-}
+
 
 
 //  %%%%%%%% slider %%%%%%%%
@@ -409,7 +441,6 @@
   }
 }
 
-// Media query for responsive design
 @media (max-width: 768px) {
   .collection {
     grid-template-columns: repeat(2, 1fr);

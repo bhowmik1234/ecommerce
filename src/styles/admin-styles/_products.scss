@@ -113,6 +113,7 @@
         }
 
         > input {
+          color: $text-color;
           @include inputStyle(
             100%,
             1rem,

@@ -1,0 +1,227 @@
+// Product.scss
+// @import 'variables';
+
+.product {
+    max-width: 100vw;
+    //   padding: 10rem;
+    background-color: $secondary-color;
+    color: $text-color;
+    margin: 0 auto;
+    font-family: Arial;
+
+    &__main {
+        @include flex(row, flex, stretch, 5rem);
+        margin-bottom: 2rem;
+        padding: 8rem 10rem;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+    }
+
+    &__image-container {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    &__info {
+        flex: 1;
+    }
+
+    &__name {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: $text-color;
+    }
+
+    &__description {
+        font-size: 1rem;
+        color: $accent-color;
+        margin-bottom: 1rem;
+    }
+
+    &__price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $second-color;
+        margin-bottom: 1rem;
+    }
+
+    &__rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .star-filled {
+            color: #f39c12;
+        }
+
+        .star-empty {
+            color: gray;
+        }
+
+        span {
+            margin-left: 0.5rem;
+            color: $text-color;
+        }
+    }
+
+    &__stock {
+        font-size: 0.9rem;
+        color: $text-color;
+        margin-bottom: 1rem;
+
+        span {
+            font-weight: bold;
+            // color: $text-color;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__quantity {
+        display: flex;
+        color: $text-color;
+        align-items: center;
+        gap: 0.5rem;
+
+
+        label {
+            font-size: 0.9rem;
+            color: $text-color;
+        }
+
+        input {
+            width: 60px;
+            padding: 0.5rem;
+            border: 1px solid rgb(91, 90, 90);
+            border-radius: 4px;
+            color: $text-color;
+            background-color: $primary-color;
+        }
+    }
+
+    &__add-to-cart {
+        background-color: $second-color;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+
+    &__favorite {
+        background-color: transparent;
+        border: 1px solid gray;
+        color: $second-color;
+        padding: 0.75rem;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: gray;
+        }
+
+        &.favorite-active {
+            background-color: white;
+            border-color: white;
+            color: white;
+        }
+    }
+
+    &__description,
+    &__related {
+        margin-top: 2rem;
+        padding: 1rem 8rem;
+
+
+        h2 {
+            font-size: 1.5rem;
+            color: $text-color;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: $text-color;
+            line-height: 1.6;
+            border-bottom: 1px solid white;
+        }
+    }
+    // .product__related {
+    //     padding: 8rem 10rem;
+    // }
+    // .product__description {
+    //     //   padding: 8rem 10rem;
+    // }
+}
+
+.product-slider-container {
+    position: relative;
+    width: 100%;
+    padding: 0 40px; // Space for arrow buttons
+    margin-top: 2rem;
+    > h1 {
+        color: white;
+    }
+}
+
+.product-slider {
+    gap: 2rem;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; // Hide scrollbar for Firefox
+    -ms-overflow-style: none; // Hide scrollbar for IE and Edge
+
+    &::-webkit-scrollbar {
+        display: none; // Hide scrollbar for Chrome, Safari, and Opera
+    }
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    &.left {
+        left: 0;
+    }
+
+    &.right {
+        right: 0;
+    }
+}

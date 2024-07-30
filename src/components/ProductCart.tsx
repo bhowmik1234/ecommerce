@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { CartItem } from "../types/types"
+import { FaHeart } from 'react-icons/fa';
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import { useAddWishListMutation, useDeleteWishListMutation } from "../redux/api/wishlistAPI";
+import toast from "react-hot-toast";
+
 
 type ProductProps = {
   productId: string;
@@ -16,17 +24,51 @@ const ProductCart = ({
   stock,
   handler
 }: ProductProps) => {
+  const [isWishlisted, setIsWishlisted] = React.useState(false);
+  const { user } = useSelector((state: RootState) => state.userReducer);
+
+  const [addWishList] = useAddWishListMutation();
+  const [deleteWishList] = useDeleteWishListMutation();
 
   const discount = 10;
   const rating = 5;
   const ratingCount = 10;
+  
+  const navigate = useNavigate();
+  const productDetail = () =>{
+    return navigate(`/product/${productId}`);
+  }
 
+  const handleWishlist = async (e: any) => {
+    e.stopPropagation();
+    if(!isWishlisted){
+      await addWishList({userId: user?._id!, productId});
+      toast.success("added to cart.");
+      setIsWishlisted(true);
+    }else{
+      await deleteWishList({userId: user?._id!, productId});
+      toast.success("Removed from cart.");
+      setIsWishlisted(false);
+    }
+
+  };
+
+  const addTocart = (e:any) =>{
+    e.stopPropagation();
+    handler({ productId, photo, name, price, stock, quantity: 1 });
+  }
 
   return (
-    <div className="productCart">
+    <div className="productCart" onClick={productDetail}>
       <div className="imageWrapper">
         <img src={`${import.meta.env.VITE_SERVER}/${photo}`} alt={name} />
         {discount && <span className="discount">{discount}% OFF</span>}
+        <button 
+          className={`wishlistBtn ${isWishlisted ? 'wishlisted' : ''}`} 
+          onClick={handleWishlist}
+        >
+          <FaHeart />
+        </button>
       </div>
       <div className="productInfo">
         <h3 className="name">{name}</h3>
@@ -38,7 +80,7 @@ const ProductCart = ({
       </div>
       <button
         className="addToCartBtn"
-        onClick={() => handler({ productId, photo, name, price, stock, quantity: 1 })}
+        onClick={addTocart}
       >
         Add to Cart
       </button>

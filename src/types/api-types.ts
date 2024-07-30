@@ -98,6 +98,16 @@ export type MessageResponse = {
     adminUserId: string
   }
 
+  export type NewWishListResponse = {
+    userId: string,
+    productId: string
+  }
+
+  export type DeleteWishListResponse = {
+    userId: string,
+    productId: string
+  }
+
 
 
   // %%%%%%%%%%%%
@@ -120,3 +130,9 @@ export type MessageResponse = {
     success: boolean;
     charts: Line;
   };
+
+  export type WishListResponse = {
+    success: boolean,
+    message: string,
+    WishList: Product[];
+  }

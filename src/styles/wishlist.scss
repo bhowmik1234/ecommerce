@@ -1,0 +1,11 @@
+/* WishList.module.scss */
+
+.wishlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 5rem;
+    background-color: $secondary-color;
+    height: 100vh;
+  }
+  
