@@ -30,7 +30,7 @@ $shadow-color: rgba(0, 0, 0, 0.1);
 
 a {
     text-decoration: none;
-    color: aquamarine;
+    color: $second-color;
 }
 
 // ul{
@@ -76,6 +76,13 @@ a {
 
     .logo {
         font-size: 1.5rem;
+        > a > img{
+            width: 10rem;
+            height: 5rem;
+            border-radius: 50%;
+            align-items: center;
+            display: flex;
+        }
     }
 
     .search-box {
@@ -107,6 +114,7 @@ a {
     .nav-items {
         position: relative;
         @include flex(row, space-around, center, 2rem);
+
         a {
             font-size: 1.5rem;
         }
@@ -116,6 +124,10 @@ a {
             border: none;
             font-size: 1.5rem;
             color: white;
+            > img {
+                @include square(2rem);
+                border-radius: 50%;
+                }
         }
         &:hover {
             color: magenta;

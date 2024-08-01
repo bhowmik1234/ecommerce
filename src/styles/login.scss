@@ -8,7 +8,7 @@
       height: 80%;
       max-width: 400px;
       padding: 2rem;
-      // background-color: antiquewhite;
+      background-color: antiquewhite;
       @include baseShadow;
       @include flex(column, center, stretch);
       > div {

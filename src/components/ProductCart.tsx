@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "../types/types"
 import { FaHeart } from 'react-icons/fa';
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { useAddWishListMutation, useDeleteWishListMutation } from "../redux/api/wishlistAPI";
+import { useAddWishListMutation, useDeleteWishListMutation, useMyWishListQuery } from "../redux/api/wishlistAPI";
 import toast from "react-hot-toast";
+import WishList from "../pages/WishList";
 
 
 type ProductProps = {
@@ -26,6 +27,22 @@ const ProductCart = ({
 }: ProductProps) => {
   const [isWishlisted, setIsWishlisted] = React.useState(false);
   const { user } = useSelector((state: RootState) => state.userReducer);
+  const { data: wishListData, isLoading} = useMyWishListQuery(user?._id!);
+
+  // useEffect(()=>{
+
+  useEffect(() => {
+    if (wishListData) {
+      const found = wishListData.WishList.some(e => e._id === productId);
+      if (found !== isWishlisted) {
+        setIsWishlisted(true);
+      }
+    }
+  }, [ isWishlisted]);
+    
+
+  // },[isWishlisted])
+
 
   const [addWishList] = useAddWishListMutation();
   const [deleteWishList] = useDeleteWishListMutation();
@@ -41,15 +58,20 @@ const ProductCart = ({
 
   const handleWishlist = async (e: any) => {
     e.stopPropagation();
-    if(!isWishlisted){
-      await addWishList({userId: user?._id!, productId});
-      toast.success("added to cart.");
-      setIsWishlisted(true);
-    }else{
-      await deleteWishList({userId: user?._id!, productId});
-      toast.success("Removed from cart.");
-      setIsWishlisted(false);
+    try {
+      if(!isWishlisted){
+        await addWishList({userId: user?._id!, productId});
+        toast.success("added to cart.");
+        setIsWishlisted(true);
+      }else{
+        setIsWishlisted(false);
+        await deleteWishList({userId: user?._id!, productId});
+        toast.success("Removed from cart.");
+      }
+    } catch (error) {
+      console.log(error);
     }
+    
 
   };
 

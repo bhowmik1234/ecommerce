@@ -11,6 +11,7 @@ export const wishlistAPI = createApi({
         addWishList: builder.mutation<MessageResponse, NewWishListResponse>({
             query: ({userId, productId}) => `${productId}?id=${userId}`,
             invalidatesTags: ["wish"]
+
         }),
         myWishList: builder.query<WishListResponse, string>({
             query: (id) => `my?id=${id}`,
@@ -18,7 +19,10 @@ export const wishlistAPI = createApi({
             // keepUnusedDataFor: 0
         }),
         deleteWishList: builder.mutation<MessageResponse, DeleteWishListResponse>({
-            query: ({userId, productId}) => `delete/${productId}?id=${userId}`,
+            query: ({userId, productId}) => ({
+                url: `delete/${productId}?id=${userId}`,
+                method: "DELETE"
+            }),
             invalidatesTags: ["wish"],
             
         }),

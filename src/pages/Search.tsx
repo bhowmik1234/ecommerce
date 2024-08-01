@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import ProductCart from "../components/ProductCart";
-import { useCategoriesQuery, useLatestProductsQuery, useSeatchProductsQuery } from "../redux/api/productAPI";
+import { useAllProductsQuery, useCategoriesQuery, useLatestProductsQuery, useSeatchProductsQuery } from "../redux/api/productAPI";
 import toast from "react-hot-toast";
 import { CustomError } from "../types/api-types";
 import { Skeleton } from "../components/Loader";
@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 const Search = () => {
   const dispatch = useDispatch();
   const { data: CategoriesResponse, isLoading: isLoadingCategories, isError, error } = useCategoriesQuery("");
-  const { data: LatestData, isLoading: LatestLoading, isError: LatestError, error: lerror } = useLatestProductsQuery("");
+  const { data: LatestData, isLoading: LatestLoading, isError: LatestError, error: lerror } = useAllProductsQuery("");
 
   // const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");

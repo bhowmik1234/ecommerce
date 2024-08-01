@@ -12,6 +12,11 @@ import { RootState } from "../../redux/store";
 import { CustomError } from "../../types/api-types";
 import toast from "react-hot-toast";
 import { Skeleton } from "../../components/Loader";
+import { useEffect } from "react";
+import { getLastMonths } from "../../utils/features";
+
+const { lastSixMonths} = getLastMonths();
+
 
 const Dashboard = () => {
 
@@ -34,12 +39,6 @@ const Dashboard = () => {
           isLoading ? <Skeleton length={20} width="50vw" /> :
             (
               <>
-                <div className="bar">
-                  <BsSearch />
-                  <input type="text" placeholder="Search for data, users, docs" />
-                  <FaRegBell />
-                  <img src={user?.photo} alt="User" />
-                </div>
 
                 <section className="widget-container">
                   <WidgetItem
@@ -80,6 +79,7 @@ const Dashboard = () => {
                       title_2="Transaction"
                       bgColor_1="rgb(0, 115, 255)"
                       bgColor_2="rgba(53, 162, 235, 0.8)"
+                      labels={lastSixMonths}
                     />
                   </div>
 
@@ -87,7 +87,7 @@ const Dashboard = () => {
                     <h2>Inventory</h2>
 
                     <div>
-                      {stats.categoryCount.map((i) => {
+                      {stats.categoryCount.map((i, index) => {
 
                         const [heading, value] = Object.entries(i)[0];
                         return (

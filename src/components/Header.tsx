@@ -5,12 +5,17 @@ import { User } from "../types/types";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import toast from "react-hot-toast";
+import { RootState } from "../redux/store";
+import { useSelector } from "react-redux";
+import Logo from "../assets/logo-transparent-png.png"
 
 interface PropsTypes {
   user: User | null
 }
 
 const Header = ({ user }: PropsTypes) => {
+
+  const { user: userProfle } = useSelector((state: RootState) => state.userReducer);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -34,7 +39,9 @@ const Header = ({ user }: PropsTypes) => {
   return (
     <nav className="header">
       <div className="logo">
-        <Link onClick={() => { setIsOpen(false) }} to="/"><p>Home</p></Link>
+        <Link onClick={() => { setIsOpen(false) }} to="/">
+          <img src={Logo} alt="ebag" />
+        </Link>
       </div>
       <div className="search-box" >
         <input type="text" onChange={(e) => setInput(e.target.value)} placeholder="Search" />
@@ -50,7 +57,7 @@ const Header = ({ user }: PropsTypes) => {
           user?._id ? (
             <>
               <button onClick={() => setIsOpen((prev) => !prev)}>
-                <FaUser />
+                <img src={userProfle?.photo} alt="User" />
               </button>
               <dialog open={isOpen} className="user-menu">
                 <div onClick={()=> setIsOpen(false)}className="user-menu__content">

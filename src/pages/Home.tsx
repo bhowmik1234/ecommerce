@@ -10,36 +10,39 @@ import Slider from "../components/Slider";
 
 const brands: Record<string, string>[] = [
   {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-    name: "Amazon",
-  },
-  {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
+    logo: "https://www.citypng.com/public/uploads/preview/hd-white-nike-logo-transparent-png-701751694777170hrodp6c2ek.png?v=2024070814",
     name: "Nike",
   },
   {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
-    name: "Netflix",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAT4BdeCYQ5yZCLfiua53FH69Q-61Jt1ys3A&s",
+    name: "Adidas",
   },
   {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
-    name: "Microsoft",
+    logo: "https://www.citypng.com/public/uploads/preview/zara-white-logo-download-png-701751694774624x2rs5hk3ea.png",
+    name: "Zara",
   },
   {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
-    name: "IBM",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/2560px-H%26M-Logo.svg.png",
+    name: "H&M",
   },
   {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg",
-    name: "Instagram",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UNIQLO_logo.svg/2560px-UNIQLO_logo.svg.png",
+    name: "Uniqlo",
+  },
+  {
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Levi%27s_logo.svg/2560px-Levi%27s_logo.svg.png",
+    name: "Levi's",
   },
 ];
+
+
+
 
 const images: string[] = [
   "https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   "https://images-eu.ssl-images-amazon.com/images/G/31/img24/Tablet/Samsung/July/Samsung-Galaxy-S6-Lite_1500-x-300.jpg",
   "https://images-eu.ssl-images-amazon.com/images/G/31/img24/Beauty/July/TBS/Updated/Lux-perfumes-for-men-PCgh._CB567481362_.jpg",
-  "https://m.media-amazon.com/images/I/71Y46R03GwL._SX3000_.jpg",
+  "https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/Meghana/iQOO/Z9LiteBau/V2/D147682074_WLD_BAU_iQOO-Z9-Lite-5G_DesktopTall_Hero_3000x1200V2._CB569330392_.jpg",
 ];
 
 export const Home = () => {
